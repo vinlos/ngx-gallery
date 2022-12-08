@@ -1,5 +1,5 @@
 {
-  "name": "@kolkov/ngx-gallery",
+  "name": "@rybos/ngx-gallery",
   "version": "2.0.1",
   "description": "A simple responsive native gallery component for Angular 8+ and 13+.",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>",

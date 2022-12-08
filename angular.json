@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@kolkov/ngx-gallery": {
+    "@rybos/ngx-gallery": {
       "projectType": "library",
       "root": "projects/gallery",
       "sourceRoot": "projects/gallery/src",
@@ -165,7 +165,8 @@
   },
   "cli": {
     "analytics": "043a2015-5fc9-475f-8584-ee4f1a29dca6",
-    "defaultCollection": "@angular-eslint/schematics"
-  },
-  "defaultProject": "gallery-app"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  }
 }
