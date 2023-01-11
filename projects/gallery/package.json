@@ -1,18 +1,18 @@
 {
   "name": "@rybos/ngx-gallery",
-  "version": "2.0.2",
-  "description": "A simple responsive native gallery component for Angular 14.",
+  "version": "15.0.0",
+  "description": "A simple responsive native gallery component for Angular 15.",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>",
-  "repository": "https://github.com/kolkov/ngx-gallery",
+  "repository": "https://github.com/rybos86/ngx-gallery",
   "license": "MIT",
   "private": false,
   "bugs": {
-    "url": "https://github.com/kolkov/ngx-gallery/issues"
+    "url": "https://github.com/rybos86/ngx-gallery/issues"
   },
   "peerDependencies": {
-    "@angular/common": ">=13.0.0 <15",
-    "@angular/core": ">=13.0.0 <15",
-    "@angular/animations": ">=13.0.0 <15"
+    "@angular/common": ">=15.0.0",
+    "@angular/core": ">=15.0.0",
+    "@angular/animations": ">=15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
