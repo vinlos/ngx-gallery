@@ -1,18 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {NgxGalleryOptions} from '@rybos/ngx-gallery';
-import {NgxGalleryImage} from '@rybos/ngx-gallery';
-import {NgxGalleryAnimation} from '@rybos/ngx-gallery';
+import { Component, OnInit } from '@angular/core';
+import { NgxGalleryOptions } from '@vinlos/ngx-gallery';
+import { NgxGalleryImage } from '@vinlos/ngx-gallery';
+import { NgxGalleryAnimation } from '@vinlos/ngx-gallery';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-
-  constructor() { }
 
   ngOnInit() {
     this.galleryOptions = [
