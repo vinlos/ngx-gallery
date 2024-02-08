@@ -1,35 +1,36 @@
 # NgxGallery
-A simple native gallery component for Angular 8+ and 13+.
 
-[![npm version](https://badge.fury.io/js/%40kolkov%2Fngx-gallery.svg)](https://badge.fury.io/js/%40kolkov%2Fngx-gallery)
-[![demo](https://img.shields.io/badge/demo-StackBlitz-blueviolet.svg)](https://stackblitz.com/edit/kolkov-ngx-gallery)
-[![Build Status](https://travis-ci.com/kolkov/ngx-gallery.svg?branch=master)](https://travis-ci.com/kolkov/ngx-gallery)
-[![npm](https://img.shields.io/npm/dw/@rybos/ngx-gallery.svg)](https://www.npmjs.com/package/@rybos/ngx-gallery)
-[![](https://data.jsdelivr.com/v1/package/npm/@rybos/ngx-gallery/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@rybos/ngx-gallery)
-[![Coverage Status](https://coveralls.io/repos/github/kolkov/ngx-gallery/badge.svg?branch=master)](https://coveralls.io/github/kolkov/ngx-gallery?branch=master)
-[![dependencies Status](https://david-dm.org/kolkov/ngx-gallery/status.svg)](https://david-dm.org/kolkov/ngx-gallery)
-[![devDependencies Status](https://david-dm.org/kolkov/ngx-gallery/dev-status.svg)](https://david-dm.org/kolkov/ngx-gallery?type=dev)
-[![codecov](https://codecov.io/gh/kolkov/ngx-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/kolkov/ngx-gallery)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/AndreyKolkov)
+A simple native gallery component for Angular 16+.
 
-## Demo
+<!-- [![npm version](https://badge.fury.io/js/%40kolkov%2Fngx-gallery.svg)](https://badge.fury.io/js/%40kolkov%2Fngx-gallery) -->
+<!-- [![demo](https://img.shields.io/badge/demo-StackBlitz-blueviolet.svg)](https://stackblitz.com/edit/kolkov-ngx-gallery) -->
+<!-- [![Build Status](https://travis-ci.com/kolkov/ngx-gallery.svg?branch=master)](https://travis-ci.com/kolkov/ngx-gallery) -->
+[![npm](https://img.shields.io/npm/dw/@vinlos/ngx-gallery.svg)](https://www.npmjs.com/package/@vinlos/ngx-gallery)
+<!-- [![](https://data.jsdelivr.com/v1/package/npm/@vinlos/NGX-gallery/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@vinlos/ngx-gallery) -->
+<!-- [![Coverage Status](https://coveralls.io/repos/github/kolkov/ngx-gallery/badge.svg?branch=master)](https://coveralls.io/github/kolkov/ngx-gallery?branch=master) -->
+<!-- [![dependencies Status](https://david-dm.org/kolkov/ngx-gallery/status.svg)](https://david-dm.org/kolkov/ngx-gallery) -->
+<!-- [![devDependencies Status](https://david-dm.org/kolkov/ngx-gallery/dev-status.svg)](https://david-dm.org/kolkov/ngx-gallery?type=dev) -->
+<!-- [![codecov](https://codecov.io/gh/kolkov/ngx-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/kolkov/ngx-gallery) -->
+<!-- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/AndreyKolkov) -->
+
+<!-- ## Demo
 Demo is here [demo][demo]
 
-Working code for this demo at stackblitz [example](https://stackblitz.com/edit/kolkov-ngx-gallery)
+Working code for this demo at stackblitz [example](https://stackblitz.com/edit/kolkov-ngx-gallery) -->
 
 ## Getting Started
 
 ### Installation
 
-Install via [npm][npm] package manager 
+Install via [npm][npm] package manager
 
 ```bash
-npm install @rybos/ngx-gallery --save
+npm install @vinlos/ngx-gallery --save
 ```
+
 ### Versions
 
-2.x.x and above - for Angular v13+
-1.x.x and above - for Angular v8+
+16.x.x and above - for Angular v16+
 
 ### Usage
 
@@ -37,7 +38,7 @@ Import `ngx-gallery` module
 
 ```js
 import { HttpClientModule} from '@angular/common/http';
-import { NgxGalleryModule } from '@rybos/ngx-gallery';
+import { NgxGalleryModule } from '@vinlos/ngx-gallery';
 
 @NgModule({
   imports: [ HttpClientModule, NgxGalleryModule ]
@@ -52,11 +53,11 @@ Then in HTML
 
 where
 
-```
+```typescript
 import {Component, OnInit} from '@angular/core';
-import {NgxGalleryOptions} from '@rybos/ngx-gallery';
-import {NgxGalleryImage} from '@rybos/ngx-gallery';
-import {NgxGalleryAnimation} from '@rybos/ngx-gallery';
+import {NgxGalleryOptions} from '@vinlos/ngx-gallery';
+import {NgxGalleryImage} from '@vinlos/ngx-gallery';
+import {NgxGalleryAnimation} from '@vinlos/ngx-gallery';
 
 @Component({
   selector: 'app-root',
@@ -123,10 +124,13 @@ export class AppComponent implements OnInit{
   }
 }
 ```
+
 add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 20px; }`
 
 ## API
+
 ### Inputs
+
 | Input  | Type | Default | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [options] | `NgxGalleryOptions[]` | `-` | no | Config options for the Gallery |
@@ -158,7 +162,9 @@ add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 
 | canMoveThumbnailsRight(): boolean  | Returns true if you can move thumbnails to right |
 
 ### NgxGalleryOptions
+
 #### Layout options
+
 | Input  | Type | Default | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | width  | `string` | `500px` | no | Gallery width |
@@ -171,6 +177,7 @@ add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 
 | lazyLoading  | `boolean` | `true` | no | Enables/disables lazy loading for images |
 
 #### Image options
+
 | Input  | Type | Default | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | image  | `boolean` | `true` | no | Enables or disables image |
@@ -188,6 +195,7 @@ add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 
 | imageActions  | `NgxGalleryAction[]` | `[]` | no | Enables or disables navigation bullets |
 
 #### Thumbnails options
+
 | Input  | Type | Default | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | thumbnails  | `boolean` | `true` | no | Enables or disables thumbnails |
@@ -208,8 +216,8 @@ add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 
 | thumbnailActions  | `NgxGalleryAction[]` | `[]` | no | Array of custom actions |
 | thumbnailClasses  | `string[]` | `[]` | no | Custom classes to add to thumbnail component |
 
-
 #### Preview options
+
 | Input  | Type | Default | Required | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | preview  | `boolean` | `true` | no | Enables or disables preview |
@@ -263,25 +271,30 @@ add this class to app CSS `.ngx-gallery { display: inline-block; margin-bottom: 
 | label  | `string` | `-` | no | Label used for aria-label when thumbnail is a link |
 
 ### NgxGalleryAnimation
+
 - `Fade` (default)
 - `Slide`
 - `Rotate`
 - `Zoom`
 
 ### NgxGalleryImageSize
+
 - `Cover` (default)
 - `Contain`
 
 ### NgxGalleryLayout
+
 - `Top`
 - `Bottom` (default)
 
 ### NgxGalleryOrder
+
 - `Column` (default)
 - `Row`
 - `Page`
 
 ### NgxGalleryAction
+
 - `icon` | Type: `string` - icon for custom action
 - `disabled` | Type: `boolean` | Default value: `false` - if the icon should be disabled
 - `titleText` | Type: `string` | Default value: `''` - text to set the title attribute to
@@ -297,38 +310,47 @@ ngx-gallery/
     ├── gallery/
     └── gallery-app/
 ```
+
 `gallery/` - library
 
 `gallery-app/` - demo application
 
-
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/kolkov/ngx-gallery/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+If you wish to contribute, you can:
 
-Editor preferences are available in the [editor config](https://github.com/kolkov/ngx-gallery/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+- Open [issues](https://github.com/vinlos/ngx-gallery/issues)
+- Create [pull requests](https://github.com/vinlos/ngx-gallery/pulls)
+
+More detailed guidelines will follow, if needed.
+
+Editor preferences are available in the [editor config](https://github.com/vinlos/ngx-gallery/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, NgxGallery is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-See [the Releases section of our project](https://github.com/kolkov/ngx-gallery/releases) for changelogs for each release version.
+See [the Releases section of our project](https://github.com/vinlos/ngx-gallery/releases) for changelogs for each release version.
 
-## Creators
+## Creator
 
-**Andrey Kolkov**
+**Andrey Kolkov** <https://github.com/kolkov>
 
-* <https://github.com/kolkov>
+## Maintainers
+
+* **Vincenzo Losito** https://github.com/vinlos
 
 ## Credits
 
-This library is being fully rewritten for next Angular versions from original abandoned library written by Łukasz Gałka. I maintained full compatibility with the original library at the api level.
-<https://github.com/lukasz-galka/ngx-gallery>
+This library is being fully rewritten for next Angular versions from original abandoned library written by Łukasz Gałka. Andrey Kolkov maintained full compatibility with the original library at the api level.
+<https://github.com/lukasz-galka/ngx-gallery>.
 
-## Donate
+This has then been forked by [rybos86](https://github.com/rybos86/ngx-gallery) who added Ivy support and migrated it to Angular 15+.
 
-If you like my work, and I save your time you can buy me a :beer: or :pizza: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/AndreyKolkov)
+<!-- ## Donate -->
 
-[npm]: https://www.npmjs.com/
-[demo]: https://kolkov-ngx-gallery.stackblitz.io/
-[example]: https://stackblitz.com/edit/kolkov-ngx-gallery
+<!-- If you like my work, and I save your time you can buy me a :beer: or :pizza: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/AndreyKolkov) -->
+
+<!-- [npm]: https://www.npmjs.com/ -->
+<!-- [demo]: https://kolkov-ngx-gallery.stackblitz.io/ -->
+<!-- [example]: https://stackblitz.com/edit/kolkov-ngx-gallery -->

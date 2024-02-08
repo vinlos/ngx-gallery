@@ -11,12 +11,12 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {DomSanitizer, SafeResourceUrl, SafeStyle} from '@angular/platform-browser';
-import {NgxGalleryService} from '../ngx-gallery.service';
-import {NgxGalleryOrderedImage} from '../ngx-gallery-ordered-image';
-import {NgxGalleryAction} from '../ngx-gallery-action';
-import {NgxGalleryAnimation} from '../ngx-gallery-animation';
-import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
+import { DomSanitizer, SafeResourceUrl, SafeStyle } from '@angular/platform-browser';
+import { NgxGalleryService } from '../ngx-gallery.service';
+import { NgxGalleryOrderedImage } from '../ngx-gallery-ordered-image';
+import { NgxGalleryAction } from '../ngx-gallery-action';
+import { NgxGalleryAnimation } from '../ngx-gallery-animation';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
 
 type Orientation = ('slideLeft' | 'slideRight' | 'fade' | 'rotateLeft' | 'rotateRight' | 'zoom' | 'none');
 
@@ -35,46 +35,46 @@ type Orientation = ('slideLeft' | 'slideRight' | 'fade' | 'rotateLeft' | 'rotate
       state('rotateRight', style({})),
       state('zoom', style({})),
       transition('slideRight => void', [
-        animate('500ms ease-in-out', style({transform: 'translateX(-100%)'}))
+        animate('500ms ease-in-out', style({ transform: 'translateX(-100%)' }))
       ]),
       transition('void => slideRight', [
-        style({transform: 'translateX(100%)'}),
-        animate('500ms ease-in-out', style({transform: 'translateX(0)'}))
+        style({ transform: 'translateX(100%)' }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)' }))
       ]),
       transition('slideLeft => void', [
-        animate('500ms ease-in-out', style({transform: 'translateX(100%)'}))
+        animate('500ms ease-in-out', style({ transform: 'translateX(100%)' }))
       ]),
       transition('void => slideLeft', [
-        style({transform: 'translateX(-100%)'}),
-        animate('500ms ease-in-out', style({transform: 'translateX(0)'}))
+        style({ transform: 'translateX(-100%)' }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)' }))
       ]),
       transition('fade => void', [
-        animate('500ms ease-in-out', style({opacity: '0'}))
+        animate('500ms ease-in-out', style({ opacity: '0' }))
       ]),
       transition('void => fade', [
-        style({opacity: '0'}),
-        animate('500ms ease-in-out', style({opacity: '1'}))
+        style({ opacity: '0' }),
+        animate('500ms ease-in-out', style({ opacity: '1' }))
       ]),
       transition('rotateLeft => void', [
-        animate('500ms ease-in-out', style({transform: 'scale(1, 1) rotate(-90deg)', opacity: '0'}))
+        animate('500ms ease-in-out', style({ transform: 'scale(1, 1) rotate(-90deg)', opacity: '0' }))
       ]),
       transition('void => rotateLeft', [
-        style({transform: 'scale(1, 1) rotate(-90deg)', opacity: '0'}),
-        animate('500ms ease-in-out', style({transform: 'scale(1, 1) rotate(0deg)', opacity: '1'}))
+        style({ transform: 'scale(1, 1) rotate(-90deg)', opacity: '0' }),
+        animate('500ms ease-in-out', style({ transform: 'scale(1, 1) rotate(0deg)', opacity: '1' }))
       ]),
       transition('rotateRight => void', [
-        animate('500ms ease-in-out', style({transform: 'scale(1, 1) rotate(90deg)', opacity: '0'}))
+        animate('500ms ease-in-out', style({ transform: 'scale(1, 1) rotate(90deg)', opacity: '0' }))
       ]),
       transition('void => rotateRight', [
-        style({transform: 'scale(1, 1) rotate(90deg)', opacity: '0'}),
-        animate('500ms ease-in-out', style({transform: 'scale(1, 1) rotate(0deg)', opacity: '1'}))
+        style({ transform: 'scale(1, 1) rotate(90deg)', opacity: '0' }),
+        animate('500ms ease-in-out', style({ transform: 'scale(1, 1) rotate(0deg)', opacity: '1' }))
       ]),
       transition('zoom => void', [
-        animate('500ms ease-in-out', style({transform: 'scale(2.5,2.5)', opacity: '0'}))
+        animate('500ms ease-in-out', style({ transform: 'scale(2.5,2.5)', opacity: '0' }))
       ]),
       transition('void => zoom', [
-        style({transform: 'scale(2.5,2.5)', opacity: '0'}),
-        animate('500ms ease-in-out', style({transform: 'scale(1, 1)', opacity: '1'}))
+        style({ transform: 'scale(2.5,2.5)', opacity: '0' }),
+        animate('500ms ease-in-out', style({ transform: 'scale(1, 1)', opacity: '1' }))
       ]),
     ]),
   ]
@@ -82,7 +82,7 @@ type Orientation = ('slideLeft' | 'slideRight' | 'fade' | 'rotateLeft' | 'rotate
 export class NgxGalleryImageComponent implements OnInit, OnChanges {
   @Input() images: NgxGalleryOrderedImage[];
   @Input() clickable: boolean;
-  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
+  // eslint-disable-next-line no-underscore-dangle, id-blacklist, id-match
   _selectedIndex;
   @Input()
   set selectedIndex(index: number) {
@@ -144,7 +144,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
   private timer;
 
   constructor(private sanitization: DomSanitizer, private changeDetectorRef: ChangeDetectorRef,
-              private elementRef: ElementRef, private helperService: NgxGalleryService) {
+    private elementRef: ElementRef, private helperService: NgxGalleryService) {
     this.changeDetectorRef = changeDetectorRef;
     this.action = 'none';
   }
