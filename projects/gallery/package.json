@@ -1,7 +1,7 @@
 {
   "name": "@vinlos/ngx-gallery",
-  "version": "16.0.0",
-  "description": "A simple responsive native gallery component for Angular 16.",
+  "version": "17.0.0",
+  "description": "A simple responsive native gallery component for Angular 17.",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>",
   "contributors": [{
     "name": "Vincenzo Losito",
@@ -14,12 +14,12 @@
     "url": "https://github.com/vinlos/ngx-gallery/issues"
   },
   "peerDependencies": {
-    "@angular/common": ">=16.0.0",
-    "@angular/core": ">=16.0.0",
-    "@angular/animations": ">=16.0.0"
+    "@angular/common": ">=17.3.2",
+    "@angular/core": ">=17.3.2",
+    "@angular/animations": ">=17.3.2"
   },
   "dependencies": {
-    "tslib": "^2.3.1"
+    "tslib": "^2.6.2"
   },
   "keywords": [
     "angular",

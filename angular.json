@@ -65,7 +65,8 @@
             ],
             "styles": [
               "projects/gallery-app/src/styles.scss",
-              "./node_modules/font-awesome/scss/font-awesome.scss"
+              "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/solid.css" 
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -108,18 +109,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gallery-app:build"
+            "buildTarget": "gallery-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gallery-app:build:production"
+              "buildTarget": "gallery-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gallery-app:build"
+            "buildTarget": "gallery-app:build"
           }
         },
         "test": {
