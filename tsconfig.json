@@ -30,9 +30,6 @@
       "@vinlos/ngx-gallery/*": [
         "dist/gallery/*"
       ],
-      "tslib": [
-        "./node_modules/tslib/tslib.d.ts"
-      ]
     },
     "useDefineForClassFields": false
   },
