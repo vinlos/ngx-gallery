@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxGalleryArrowsComponent } from './ngx-gallery-arrows.component';
 
@@ -6,12 +6,12 @@ describe('NgxGalleryArrowsComponent', () => {
   let component: NgxGalleryArrowsComponent;
   let fixture: ComponentFixture<NgxGalleryArrowsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxGalleryArrowsComponent ]
-    })
+    imports: [NgxGalleryArrowsComponent]
+})
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxGalleryArrowsComponent);

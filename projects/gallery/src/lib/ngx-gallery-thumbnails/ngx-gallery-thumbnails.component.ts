@@ -1,27 +1,25 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl, SafeStyle} from '@angular/platform-browser';
 import {NgxGalleryService} from '../ngx-gallery.service';
 import {NgxGalleryAction} from '../ngx-gallery-action';
 import {NgxGalleryOrder} from '../ngx-gallery-order';
+import { NgClass } from '@angular/common';
+import { NgxGalleryActionComponent } from '../ngx-gallery-action/ngx-gallery-action.component';
+import { NgxGalleryArrowsComponent } from '../ngx-gallery-arrows/ngx-gallery-arrows.component';
 
 @Component({
-  selector: 'ngx-gallery-thumbnails',
-  templateUrl: './ngx-gallery-thumbnails.component.html',
-  styleUrls: ['./ngx-gallery-thumbnails.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngx-gallery-thumbnails',
+    templateUrl: './ngx-gallery-thumbnails.component.html',
+    styleUrls: ['./ngx-gallery-thumbnails.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgClass, NgxGalleryActionComponent, NgxGalleryArrowsComponent]
 })
 export class NgxGalleryThumbnailsComponent implements OnChanges {
+  private sanitization = inject(DomSanitizer);
+  private elementRef = inject(ElementRef);
+  private helperService = inject(NgxGalleryService);
+
   thumbnailsLeft: string;
   thumbnailsMarginLeft: string;
   mouseenter: boolean;
@@ -54,10 +52,6 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
   @Output() activeChange = new EventEmitter();
 
   private index = 0;
-
-  constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
-              private helperService: NgxGalleryService) {
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedIndex']) {
