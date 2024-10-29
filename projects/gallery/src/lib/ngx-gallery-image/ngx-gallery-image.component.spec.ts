@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxGalleryImageComponent } from './ngx-gallery-image.component';
 import {NgxGalleryAction} from '../ngx-gallery-action';
@@ -14,14 +14,13 @@ describe('NgxGalleryImageComponent', () => {
   let component: NgxGalleryImageComponent;
   let fixture: ComponentFixture<NgxGalleryImageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxGalleryImageComponent, NgxGalleryActionComponent, NgxGalleryBulletsComponent, NgxGalleryArrowsComponent ],
-      imports: [],
-      providers: [Renderer2, DomSanitizer, NgxGalleryService ],
-    })
+    imports: [NgxGalleryImageComponent, NgxGalleryActionComponent, NgxGalleryBulletsComponent, NgxGalleryArrowsComponent],
+    providers: [Renderer2, DomSanitizer, NgxGalleryService],
+})
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxGalleryImageComponent);

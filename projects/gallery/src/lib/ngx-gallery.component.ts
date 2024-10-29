@@ -1,18 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  DoCheck,
-  ElementRef,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import {NgxGalleryPreviewComponent} from './ngx-gallery-preview/ngx-gallery-preview.component';
 import {NgxGalleryImageComponent} from './ngx-gallery-image/ngx-gallery-image.component';
 import {NgxGalleryThumbnailsComponent} from './ngx-gallery-thumbnails/ngx-gallery-thumbnails.component';
@@ -22,16 +8,22 @@ import {NgxGalleryOptions} from './ngx-gallery-options';
 import {NgxGalleryImage} from './ngx-gallery-image';
 import {NgxGalleryOrderedImage} from './ngx-gallery-ordered-image';
 import {NgxGalleryLayout} from './ngx-gallery-layout';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ngx-gallery',
-  templateUrl: './ngx-gallery.component.html',
-  styleUrls: ['./ngx-gallery.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [NgxGalleryService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngx-gallery',
+    templateUrl: './ngx-gallery.component.html',
+    styleUrls: ['./ngx-gallery.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [NgxGalleryService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgxGalleryImageComponent, NgxGalleryThumbnailsComponent, NgClass, NgxGalleryPreviewComponent]
 })
 export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
+  private myElement = inject(ElementRef);
+  private helperService = inject(NgxGalleryService);
+
   @Input() options: NgxGalleryOptions[] = [{}];
   @Input() images: NgxGalleryImage[];
 
@@ -69,9 +61,6 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
   @HostBinding('style.width') width: string;
   @HostBinding('style.height') height: string;
   @HostBinding('style.transform') left: string;
-
-  constructor(private myElement: ElementRef, private helperService: NgxGalleryService) {
-  }
 
   ngOnInit() {
     this.options = this.options.map((opt) => new NgxGalleryOptions(opt));

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgxGalleryModule } from '@vinlos/ngx-gallery';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxGalleryModule } from 'projects/gallery/src/public-api';
 
 @NgModule({
   declarations: [

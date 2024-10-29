@@ -1,32 +1,28 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  Renderer2,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild, inject } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl, SafeStyle, SafeUrl} from '@angular/platform-browser';
 import {NgxGalleryService} from '../ngx-gallery.service';
 import {NgxGalleryAction} from '../ngx-gallery-action';
+import { NgxGalleryArrowsComponent } from '../ngx-gallery-arrows/ngx-gallery-arrows.component';
+import { NgxGalleryActionComponent } from '../ngx-gallery-action/ngx-gallery-action.component';
+import { NgxGalleryBulletsComponent } from '../ngx-gallery-bullets/ngx-gallery-bullets.component';
 
 
 @Component({
-  selector: 'ngx-gallery-preview',
-  templateUrl: './ngx-gallery-preview.component.html',
-  styleUrls: ['./ngx-gallery-preview.component.scss'],
-  // encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngx-gallery-preview',
+    templateUrl: './ngx-gallery-preview.component.html',
+    styleUrls: ['./ngx-gallery-preview.component.scss'],
+    // encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgxGalleryArrowsComponent, NgxGalleryActionComponent, NgxGalleryBulletsComponent]
 })
 export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges {
+  private sanitization = inject(DomSanitizer);
+  private elementRef = inject(ElementRef);
+  private helperService = inject(NgxGalleryService);
+  private renderer = inject(Renderer2);
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
   src: SafeUrl;
   srcIndex: number;
   description: string;
@@ -89,11 +85,6 @@ export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges 
   private isMove = false;
 
   private keyDownListener: () => void;
-
-  constructor(private sanitization: DomSanitizer, private elementRef: ElementRef,
-              private helperService: NgxGalleryService, private renderer: Renderer2,
-              private changeDetectorRef: ChangeDetectorRef) {
-  }
 
   ngOnInit() {
     if (this.arrows && this.arrowsAutoHide) {
