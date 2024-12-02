@@ -1,6 +1,6 @@
 # NgxGallery
 
-A simple native gallery component for Angular 18+.
+A simple native gallery component for Angular 16+.
 
 <!-- [![npm version](https://badge.fury.io/js/%40kolkov%2Fngx-gallery.svg)](https://badge.fury.io/js/%40kolkov%2Fngx-gallery) -->
 <!-- [![demo](https://img.shields.io/badge/demo-StackBlitz-blueviolet.svg)](https://stackblitz.com/edit/kolkov-ngx-gallery) -->
@@ -39,11 +39,10 @@ npm install @vinlos/ngx-gallery --save
 Import `ngx-gallery` module
 
 ```js
-import { HttpClientModule} from '@angular/common/http';
 import { NgxGalleryModule } from '@vinlos/ngx-gallery';
 
 @NgModule({
-  imports: [ HttpClientModule, NgxGalleryModule ]
+  imports: [ NgxGalleryModule ]
 })
 ```
 
