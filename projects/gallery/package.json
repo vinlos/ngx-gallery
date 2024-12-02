@@ -1,7 +1,7 @@
 {
   "name": "@vinlos/ngx-gallery",
-  "version": "17.0.0",
-  "description": "A simple responsive native gallery component for Angular 17.",
+  "version": "18.0.0",
+  "description": "A simple responsive native gallery component for Angular 18.",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>",
   "contributors": [
     {
@@ -21,7 +21,7 @@
     "@angular/animations": ">=18.2.9"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.8.0"
   },
   "keywords": [
     "angular",
