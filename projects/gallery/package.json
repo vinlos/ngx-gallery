@@ -9,7 +9,10 @@
       "url": "https://github.com/vinlos"
     }
   ],
-  "repository": "https://github.com/vinlos/ngx-gallery",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinlos/ngx-gallery.git"
+  },
   "license": "MIT",
   "private": false,
   "bugs": {

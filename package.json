@@ -1,6 +1,5 @@
 {
   "name": "@vinlos/ngx-gallery",
-  "version": "18.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -62,5 +61,8 @@
     "protractor": "^7.0.0",
     "ts-node": "~10.9.2",
     "typescript": "5.5.4"
-  }
+  },
+  "workspaces": [
+    "projects/*"
+  ]
 }
