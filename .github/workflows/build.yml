@@ -9,6 +9,7 @@ on:
     branches:
       - "main"
       - "master"
+      - "release/**"
   pull_request:
     branches:
       - "main"
@@ -40,13 +41,12 @@ jobs:
         with:
           node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@vinlos'
 
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          install-dependencies: true
-
-      - run: chrome --version
+    #   - name: Set up Chrome
+    #     uses: browser-actions/setup-chrome@v1
+    #     with:
+    #       install-dependencies: true
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -59,44 +59,52 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build library
-        run: npm run build:lib
-
-      - name: Build application
-        run: npm run build
-
-      - name: Test library
-        run: npm run test:ci
-
-      - name: Test application
-        run: npm run test:lib-ci
-
-      - name: Lint
-        run: npm run lint:lib
-
-      - name: Tag
-        id: tag_step
+      - name: Prepare version
         if: startsWith(github.ref, 'refs/heads/release/')
         run: |
           # Extract the base version from the branch name
+          echo "GITHUB_REF=$GITHUB_REF"
           BASE_VERSION=$(echo "${GITHUB_REF#refs/heads/release/}")
+          echo "BASE_VERSION=$BASE_VERSION"
           
           # Get the latest tag matching the base version
-          LATEST_TAG=$(git describe --tags --match "v${BASE_VERSION}.*" --abbrev=0 || echo "v${BASE_VERSION}.0")
+          git fetch --tags
+          LATEST_TAG=$(git tag --list "v${BASE_VERSION}.*" --sort=-v:refname | head -1 || echo "v${BASE_VERSION}.0")
           
           # Increment the patch version
           PATCH_VERSION=$(echo $LATEST_TAG | awk -F. '{print $NF+1}')
           VERSION="${BASE_VERSION}.${PATCH_VERSION}"
-          
-          # Create and push the new tag
-          git tag v$NEW_TAG
-          git push origin v$NEW_TAG
-          
-          # Set outputs
-          echo "::set-output name=VERSION::$VERSION"
 
+          # Prepare the new version and create the tag
+          npm version $VERSION --workspaces true --include-workspace-root true --workspaces-update false --git-tag-version false
+          
+          # Share version with next steps
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Build library
+        run: npm run build:lib
+
+    #   - name: Build application
+    #     run: npm run build
+
+    #   - name: Test library
+    #     run: npm run test:ci
+
+    #   - name: Test application
+    #     run: npm run test:lib-ci
+
+    #   - name: Lint
+    #     run: npm run lint:lib
+
+      - name: Tag
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          git tag v$VERSION
+          git push origin v$VERSION
+          
       - name: Publish
         if: startsWith(github.ref, 'refs/heads/release/')
         run: |
-          VERSION=${{ steps.tag_step.outputs.VERSION }}
-          npm run publish:lib $VERSION
+          npm run publish:lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
