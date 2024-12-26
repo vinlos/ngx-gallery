@@ -1,20 +1,20 @@
-<div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size}}">
+<div class="ngx-gallery-thumbnails-wrapper ngx-gallery-thumbnail-size-{{size()}}">
   <div class="ngx-gallery-thumbnails" [style.transform]="'translateX(' + thumbnailsLeft + ')'"
     [style.marginLeft]="thumbnailsMarginLeft">
     @for (image of getImages(); track image; let i = $index) {
-      <a [href]="hasLink(i) ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail"
+      <a [href]="hasLink(i) ? links()[i] : '#'" [target]="linkTarget()" class="ngx-gallery-thumbnail"
         (click)="handleClick($event, i)" [style.width]="getThumbnailWidth()" [style.height]="getThumbnailHeight()"
         [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)"
-        [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable }"
-        [attr.aria-label]="labels[i]">
+        [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable() }"
+        [attr.aria-label]="labels()[i]">
         @if (getFileType(image) === 'image') {
           <div [style.background-image]="getSafeUrl(image)" class="ngx-gallery-thumbnail"
-            [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable }"
+            [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable() }"
           style="width: 100%; height: 100%; position:absolute;"></div>
         }
         @if (getFileType(image) === 'video') {
           <div class="ngx-gallery-thumbnail-video">
-            <video  class="ngx-gallery-thumbnail" [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable }"
+            <video  class="ngx-gallery-thumbnail" [ngClass]="{ 'ngx-gallery-active': i === selectedIndex, 'ngx-gallery-clickable': clickable() }"
               style="width: 100%; height: 100%; position:absolute; left:0; background:#000;">
               <source [src]="image">
               Your browser does not support the video tag.
@@ -22,12 +22,12 @@
           </div>
         }
         <div class="ngx-gallery-icons-wrapper">
-          @for (action of actions; track action) {
+          @for (action of actions(); track action) {
             <ngx-gallery-action [icon]="action.icon" [disabled]="action.disabled"
-            [titleText]="action.titleText" (closeClick)="action.onClick($event, i)"></ngx-gallery-action>
+            [titleText]="action.titleText" (closeClick)="action.onClick($event, i)" />
           }
         </div>
-        @if (remainingCount && remainingCountValue && (i === (rows * columns) - 1)) {
+        @if (remainingCount() && remainingCountValue && (i === (rows() * columns()) - 1)) {
           <div class="ngx-gallery-remaining-count-overlay"
             >
             <span class="ngx-gallery-remaining-count">+{{remainingCountValue}}</span>
@@ -39,6 +39,6 @@
 </div>
 @if (canShowArrows()) {
   <ngx-gallery-arrows (prevClick)="moveLeft()" (nextClick)="moveRight()"
-    [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon"
-  [arrowNextIcon]="arrowNextIcon"></ngx-gallery-arrows>
+    [prevDisabled]="!canMoveLeft()" [nextDisabled]="!canMoveRight()" [arrowPrevIcon]="arrowPrevIcon()"
+  [arrowNextIcon]="arrowNextIcon()" />
 }
