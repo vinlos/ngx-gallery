@@ -1,10 +1,13 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ngx-gallery-bullets',
-  templateUrl: './ngx-gallery-bullets.component.html',
-  styleUrls: ['./ngx-gallery-bullets.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ngx-gallery-bullets',
+    templateUrl: './ngx-gallery-bullets.component.html',
+    styleUrls: ['./ngx-gallery-bullets.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgClass]
 })
 export class NgxGalleryBulletsComponent {
   @Input() count: number;
