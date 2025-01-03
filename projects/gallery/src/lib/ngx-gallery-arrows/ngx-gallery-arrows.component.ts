@@ -1,20 +1,19 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, input, output} from '@angular/core';
 
 @Component({
     selector: 'ngx-gallery-arrows',
     templateUrl: './ngx-gallery-arrows.component.html',
     styleUrls: ['./ngx-gallery-arrows.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true
 })
 export class NgxGalleryArrowsComponent {
-  @Input() prevDisabled: boolean;
-  @Input() nextDisabled: boolean;
-  @Input() arrowPrevIcon: string;
-  @Input() arrowNextIcon: string;
+  readonly prevDisabled = input<boolean>(undefined);
+  readonly nextDisabled = input<boolean>(undefined);
+  readonly arrowPrevIcon = input<string>(undefined);
+  readonly arrowNextIcon = input<string>(undefined);
 
-  @Output() prevClick = new EventEmitter();
-  @Output() nextClick = new EventEmitter();
+  readonly prevClick = output();
+  readonly nextClick = output();
 
   constructor() { }
 

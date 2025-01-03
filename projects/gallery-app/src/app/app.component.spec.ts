@@ -1,28 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  let fixture: ComponentFixture<AppComponent>;
-  let app: AppComponent;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-      ],
-      declarations: [AppComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(AppComponent);
-    app = fixture.componentInstance;
-    fixture.detectChanges();
+    imports: [
+        RouterTestingModule
+    ],
+    declarations: [AppComponent],
+}).compileComponents();
   });
 
-  it(`should have images`, () => {
-    expect(app.galleryImages.length).toBe(5);
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'gallery-app'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('gallery-app');
   });
 
   it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Angular Ivy compiler');
+    expect(compiled.querySelector('.content span').textContent).toContain('gallery-app app is running!');
   });
 });
