@@ -49,7 +49,7 @@ import { NgxGalleryModule } from '@vinlos/ngx-gallery';
 Then in HTML
 
 ```html
-<ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery" />
 ```
 
 where

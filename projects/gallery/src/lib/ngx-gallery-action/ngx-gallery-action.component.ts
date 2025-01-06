@@ -1,24 +1,23 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, input, output} from '@angular/core';
 
 @Component({
     selector: 'ngx-gallery-action',
     templateUrl: './ngx-gallery-action.component.html',
     styleUrls: ['./ngx-gallery-action.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxGalleryActionComponent {
-  @Input() icon: string;
-  @Input() disabled = false;
-  @Input() titleText = '';
+  readonly icon = input<string>(undefined);
+  readonly disabled = input(false);
+  readonly titleText = input('');
 
-  @Output() closeClick: EventEmitter<Event> = new EventEmitter();
+  readonly closeClick = output<Event>();
 
   constructor() {
   }
 
   handleClick(event: Event) {
-    if (!this.disabled) {
+    if (!this.disabled()) {
       this.closeClick.emit(event);
     }
 
